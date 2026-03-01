@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SoundVault | Stats & Analytics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    .chart-container {
+      position: relative;
+      background-color: #1a1a2e;
+      border: 1px solid #3d1a6e;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    .chart-container canvas {
+      max-height: 400px;
+    }
+    .chart-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .chart-half {
+      flex: 1 1 460px;
+      background-color: #1a1a2e;
+      border: 1px solid #3d1a6e;
+      border-radius: 10px;
+      padding: 2rem;
+    }
+    .chart-half h3 {
+      color: #c39bd3;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #9b59b6;
+      padding-left: 0.75rem;
+    }
+    .chart-half canvas {
+      max-height: 350px;
+    }
+    @media (max-width: 768px) {
+      .chart-grid {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <div class="logo">🎵 SoundVault</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">My Collection</a></li>
+      <li><a href="stats.html" class="active">Stats &amp; Analytics</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== BANNER ===== -->
+  <!-- Replace images/banner-stats.jpg with a royalty-free image of your choice -->
+  <header class="banner" style="background-image: url('images/banner-stats.jpg');">
+    <div class="banner-content">
+      <h1>Stats &amp; Analytics</h1>
+      <p>Breaking Down the Collection by the Numbers</p>
+    </div>
+  </header>
+
+  <!-- ===== INTRO ===== -->
+  <section>
+    <h2>About These Stats</h2>
+    <p>
+      All of the data on this page is derived directly from my physical record collection.
+      Rather than pulling from a streaming platform, these stats reflect what I've actually
+      chosen to own — which to me is a much more honest picture of my musical identity.
+      Every record here was a deliberate purchase, and the patterns that emerge from that
+      tell a more meaningful story than a play count ever could.
+    </p>
+  </section>
+
+  <!-- ===== SNAPSHOT CARDS ===== -->
+  <section>
+    <h2>Collection at a Glance</h2>
+    <div class="card-grid">
+
+      <div class="card" style="text-align: center;">
+        <div class="icon">💿</div>
+        <h3 style="font-size: 2rem; color: #fff;">123</h3>
+        <p>Total records in the collection</p>
+      </div>
+
+      <div class="card" style="text-align: center;">
+        <div class="icon">🎵</div>
+        <h3 style="font-size: 2rem; color: #fff;">Jazz</h3>
+        <p>Most represented genre</p>
+      </div>
+
+      <div class="card" style="text-align: center;">
+        <div class="icon">⭐</div>
+        <h3 style="font-size: 2rem; color: #fff;">Vulfpeck</h3>
+        <p>Most records owned by a single artist</p>
+      </div>
+
+      <div class="card" style="text-align: center;">
+        <div class="icon">📅</div>
+        <h3 style="font-size: 2rem; color: #fff;">2024</h3>
+        <p>Most active year of collecting - started documenting collection
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CHARTS ===== -->
+  <section>
+    <h2>Visual Breakdown</h2>
+    <p>A closer look at the collection through genres and release decades.</p>
+
+    <div class="chart-grid">
+
+      <!-- Doughnut Chart - Genres -->
+      <div class="chart-half">
+        <h3>Top Genres</h3>
+        <canvas id="genreChart"></canvas>
+      </div>
+
+      <!-- Bar Chart - Decades -->
+      <div class="chart-half">
+        <h3>Records by Decade</h3>
+        <canvas id="decadeChart"></canvas>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== TOP ARTISTS ===== -->
+  <section>
+    <h2>Most Represented Artists</h2>
+    <p>Artists with the most records in the collection, showing who I keep coming back to.</p>
+
+    <div class="chart-container">
+      <canvas id="artistChart"></canvas>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>&copy; 2026 <span>SoundVault</span> &mdash; Conor Stewart. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== CHART.JS SCRIPTS ===== -->
+  <script>
+    // Shared chart defaults
+    Chart.defaults.color = '#b0b0b0';
+    Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+
+    // --- GENRE DOUGHNUT CHART ---
+    const genreCtx = document.getElementById('genreChart').getContext('2d');
+    new Chart(genreCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Jazz', 'Rock & Classic Rock', 'Hip-Hop & Rap', 'Funk & Soul', 'World & Global', 'R&B & Neo-Soul'],
+        datasets: [{
+          data: [18, 16, 12, 14, 10, 8],
+          backgroundColor: [
+            '#9b59b6',
+            '#6c3483',
+            '#c39bd3',
+            '#7d3c98',
+            '#4a235a',
+            '#d2b4de'
+          ],
+          borderColor: '#0d0d0d',
+          borderWidth: 3,
+          hoverOffset: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              padding: 16,
+              font: { size: 12 }
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => ` ${ctx.label}: ${ctx.raw} records`
+            }
+          }
+        }
+      }
+    });
+
+    // --- DECADE BAR CHART ---
+    const decadeCtx = document.getElementById('decadeChart').getContext('2d');
+    new Chart(decadeCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Pre-60s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'],
+        datasets: [{
+          label: 'Records',
+          data: [3, 12, 24, 12, 1, 2, 28, 34],
+          backgroundColor: '#9b59b6',
+          borderColor: '#c39bd3',
+          borderWidth: 1,
+          borderRadius: 6,
+          hoverBackgroundColor: '#c39bd3'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => ` ${ctx.raw} records`
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: '#2a2a2a' },
+            ticks: { color: '#b0b0b0' }
+          },
+          y: {
+            grid: { color: '#2a2a2a' },
+            ticks: {
+              color: '#b0b0b0',
+              stepSize: 5
+            },
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // --- ARTIST HORIZONTAL BAR CHART ---
+    const artistCtx = document.getElementById('artistChart').getContext('2d');
+    new Chart(artistCtx, {
+      type: 'bar',
+      data: {
+        labels: [
+          'Vulfpeck',
+          'The Beatles',
+          'Elton John',
+          'Cory Wong',
+          'Weather Report',
+          'Mac DeMarco',
+          'Gary Clark Jr.',
+          'Sharon Jones & The Dap-Kings'
+        ],
+        datasets: [{
+          label: 'Records Owned',
+          data: [7, 7, 3, 4, 3, 3, 2, 2],
+          backgroundColor: [
+            '#9b59b6',
+            '#7d3c98',
+            '#6c3483',
+            '#a569bd',
+            '#c39bd3',
+            '#8e44ad',
+            '#d2b4de',
+            '#4a235a'
+          ],
+          borderColor: '#0d0d0d',
+          borderWidth: 1,
+          borderRadius: 6,
+          hoverBackgroundColor: '#c39bd3'
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => ` ${ctx.raw} records`
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: '#2a2a2a' },
+            ticks: { color: '#b0b0b0', stepSize: 1 },
+            beginAtZero: true
+          },
+          y: {
+            grid: { color: '#2a2a2a' },
+            ticks: { color: '#b0b0b0' }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

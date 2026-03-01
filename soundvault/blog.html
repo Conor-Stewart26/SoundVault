@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SoundVault | Blog</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .blog-list {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .blog-list h2 {
+      font-size: 2rem;
+      color: #c39bd3;
+      margin-bottom: 2rem;
+      border-left: 4px solid #9b59b6;
+      padding-left: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .blog-post {
+      background-color: #1a1a2e;
+      border: 1px solid #3d1a6e;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .blog-post:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(155, 89, 182, 0.3);
+    }
+
+    .blog-post .post-category {
+      display: inline-block;
+      background-color: #6c3483;
+      color: #fff;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.25rem 0.75rem;
+      border-radius: 25px;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-post h3 {
+      font-size: 1.4rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .blog-post .post-meta {
+      font-size: 0.8rem;
+      color: #6c3483;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+
+    .blog-post p {
+      font-size: 0.95rem;
+      color: #a0a0a0;
+      margin-bottom: 1.25rem;
+      line-height: 1.7;
+    }
+
+    .blog-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      background-color: #1a1a2e;
+      border: 1px solid #3d1a6e;
+      color: #c39bd3;
+      padding: 0.4rem 1rem;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: #6c3483;
+      color: #fff;
+      border-color: #6c3483;
+    }
+
+    @media (max-width: 768px) {
+      .blog-list {
+        padding: 2.5rem 1rem;
+      }
+
+      .blog-post h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <div class="logo">🎵 SoundVault</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">My Collection</a></li>
+      <li><a href="stats.html">Stats &amp; Analytics</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== BANNER ===== -->
+  <!-- Replace images/banner-blog.jpg with a royalty-free image of your choice -->
+  <header class="banner" style="background-image: url('images/banner-blog.jpg');">
+    <div class="banner-content">
+      <h1>The Blog</h1>
+      <p>Thoughts, Discoveries &amp; Deep Dives into Music</p>
+    </div>
+  </header>
+
+  <!-- ===== BLOG POSTS ===== -->
+  <div class="blog-list">
+
+    <h2>All Posts</h2>
+
+    <!-- Filter Buttons -->
+    <div class="blog-filter">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Collection Updates</button>
+      <button class="filter-btn">Music Discoveries</button>
+      <button class="filter-btn">Personal Analytics</button>
+      <button class="filter-btn">Artist Spotlights</button>
+      <button class="filter-btn">General Thoughts</button>
+    </div>
+
+    <!-- Post 1 -->
+    <div class="blog-post">
+      <span class="post-category">Personal Analytics</span>
+      <h3>How My Taste Changed in 2025</h3>
+      <p class="post-meta">February, 2026</p>
+      <p>
+        From Retro Soul and Funk to Jazz Rap and Hip-Hop, and now deep into Bossa Nova and Brazilian Jazz — my music
+        taste has taken quite the journey this year. Here's what my listening history says about me and how my ears
+        have evolved over the past 12 months.
+      </p>
+      <a href="#" class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.85rem;">Read More</a>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="blog-post">
+      <span class="post-category">Music Discoveries</span>
+      <h3>5 Albums I Will Always Recommend</h3>
+      <p class="post-meta">January, 2026</p>
+      <p>
+        Some albums don't just sound good — they open a door to a world you didn't know existed. From Nu Genea's
+        sun-soaked Mediterranean grooves to MonoNeon's genre-defying bass wizardry, these 5 records have sent me
+        down some of the most rewarding rabbit holes of my listening life. If you're looking for your next
+        obsession, you're in the right place.
+      </p>
+      <a href="#" class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.85rem;">Read More</a>
+    </div>
+
+    <!-- Post 3 - Currently Spinning -->
+    <div class="blog-post">
+      <span class="post-category">Music Discoveries</span>
+      <h3>Currently Spinning: Disco &amp; Boogie From Brazil Vol. 1 — Horse Meat Disco</h3>
+      <p class="post-meta">March 1, 2026 &nbsp;·&nbsp; Coming Soon</p>
+      <p>
+        This one has been on constant rotation lately, <em>Disco &amp; Boogie From Brazil Vol. 1</em> by Horse Meat Disco —
+        a beautifully curated dig through Brazilian disco and boogie, compiled by one of London's most respected DJ collectives.
+        Deep grooves, thick brass, and every track feels like it was pulled from a crate that took years to find — more on this one soon.
+      </p>
+      <a href="https://youtu.be/YGj1DvdE3qg?si=iG3iGL1gXX9DSuC3" target="_blank" class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.85rem;">▶ Listen on YouTube</a>
+    </div>
+
+    <!-- Post 4 - A Note on Collecting -->
+    <div class="blog-post">
+      <span class="post-category">General Thoughts</span>
+      <h3>A Note on Collecting</h3>
+      <p class="post-meta">January 28, 2026</p>
+      <p>
+        For me, buying a physical record is a commitment. You can't just skip a track —
+        you sit with the whole thing, front to back, the way the artist intended.
+        That discipline has changed how I hear music and honestly how I think about it.
+        Every piece in this collection has a memory attached to it, and that's something
+        a streaming algorithm can't replicate.
+      </p>
+      <a href="#" class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.85rem;">Read More</a>
+    </div>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>&copy; 2026 <span>SoundVault</span> &mdash; Conor Stewart. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
